@@ -1,0 +1,242 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  font-family: 'UICTFontTextStyleBody';
+}
+
+page {
+  background: #f2f2f2;
+}
+
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 8px dashed;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+}
+
+.caret.rotate {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.header {
+  width: 100%;
+}
+
+.header .nav-tabs {
+  width: 80%;
+  margin: 20px auto;
+  border-radius: 6px;
+}
+
+.header .nav-tabs .col-6 {
+  width: 49%;
+  background-color: #fff;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #d43b33;
+  margin: 0;
+  color: #d43b33;
+  padding: 8px 0;
+  font-size: 18px;
+}
+
+.header .nav-tabs .col-6.active {
+  background-color: #d43b33;
+  color: #fff;
+}
+
+.header .nav-tabs .col-6:first-child {
+  border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.header .nav-tabs .col-6:last-child {
+  border-left: none;
+  border-bottom-right-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.header .dropdown-menu {
+  position: absolute;
+  top: 85px;
+  left: 14%;
+  border: 1px solid #fff;
+  text-align: center;
+  min-width: 120px;
+  z-index: 1000;
+  /* display: none; */
+  float: left;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  list-style: none;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+
+.header .dropdown-menu.cy {
+  left: 53%;
+}
+
+.header .dropdown-menu view {
+  font-size: 18px;
+  padding: 3px 20px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+
+.header .dropdown-menu::before {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-bottom: 8px dashed #fff;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+  position: absolute;
+  top: -9px;
+  left: 41%;
+}
+
+.plan {
+  width: 100%;
+}
+
+.plan .group {
+  clear: both;
+  position: relative;
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  background-color: #fff;
+  padding: 12px 0;
+  overflow-x: hidden;
+}
+
+.plan .tzd_img {
+  width: 75px;
+  height: 75px;
+  position: absolute;
+  top: -20px;
+  right: -20px;
+}
+
+.plan .plan_tit {
+  display: block;
+  color: #000;
+  font-size: 18px;
+  padding-bottom: 5px;
+  margin: 0 55px 12px 15px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.plan .plan_tit image {
+  width: 15px;
+  height: 15px;
+  margin-left: 20px;
+  margin-top: -4px;
+}
+
+.plan .group::after {
+  content: ">";
+  display: inline-block;
+  color: #c6c6cb;
+  font-size: 24px;
+  position: absolute;
+  top: 46%;
+  right: 15px;
+}
+
+.plan .group view {
+  margin-left: 15px;
+}
+
+.plan .cont_left, .plan .bet_num .bl, .bet_num .fc_name {
+  color: #9a9a9a;
+}
+
+.nt {
+  width: 100%;
+  text-align: center;
+}
+
+.nt .nc {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.nt .nc image {
+  width: 55%;
+  margin: 0 auto 30px;
+  display: block;
+}
+
+.nt .nc text {
+  color: #333;
+  font-size: 20px;
+}
+
+.nt .nf navigator {
+  width: 80%;
+  line-height: 40px;
+  font-size: 18px;
+  display: block;
+  margin: 0 auto 20px;
+  background: #d43b33;
+  color: #f2f2f2;
+  border-radius: 6px;
+  padding: 0;
+}
+
+.nt .nf navigator::after {
+  content: "";
+}
+
+.bet_num {
+  color: #000 !important;
+  font-size: 14px;
+  line-height: 30px;
+  margin: 0 0 10px 20px;
+}
+
+.bet_num .red {
+  margin-right: 5px;
+}
+
+.bet_num .bl {
+  margin-left: 0!important;
+}
+
+.bet_num .br {
+  margin: -26px 55px 0 55px!important;
+  word-break: break-all;
+}
+
+.bet_num .br>view {
+  line-height: 16px;
+  padding: 4px 0;
+  border-bottom: 1px dotted #ccc;
+}

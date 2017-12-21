@@ -1,0 +1,191 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.col-12 {
+  width: 100%;
+}
+
+.col-4 {
+  width: 33.33333333%;
+  display: inline-block;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bets_way {
+  width: 85%;
+  line-height: 35px;
+  text-align: center;
+  margin: 0 auto 10px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+}
+
+.bets_way .col-4 {
+  border: 1px solid #d43b33;
+}
+
+.bets_way .col-4.active text.rotate {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.bets_way .col-4.active {
+  color: #fff;
+  background: #d43b33;
+}
+
+.bets_way .col-4:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-right: none;
+}
+
+.bets_way .col-4:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-left: none;
+}
+.list{
+    width: 85%;
+    margin: 0 auto;
+    position: relative;
+}
+.list .ul .li{
+    padding: 2px 0;
+}
+.list .ul .li.active{
+    background: #cccccc;
+}
+.list .ul{
+    padding: 0;
+    width: 33.33333333%;
+    position: absolute;
+    left: 0;
+    z-index: 666;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    text-align: center;
+}
+.list .ul:before{
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-bottom: 8px dashed #f3f3f3;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+    position: absolute;
+    top: -9px;
+    left: 41%;
+}
+#go_zs{
+    left: 33.33333333%;
+}
+#go_zl{
+    left: 66.66666666%;
+}
+.top {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5px 0;
+  box-sizing: border-box;
+}
+
+.top text {
+  color: #9e9e9e;
+  font-size: 14px;
+  padding-left: 10px;
+}
+
+.top .btn-area {
+  display: flex;
+  flex-direction: row;
+  padding-right: 10px;
+}
+
+.top .btn-area .jx, .top .btn-area .basket {
+  font-size: 14px;
+  padding: 0px 8px;
+}
+
+.top .btn-area .jx {
+  color: #fff;
+  margin-right: 5px;
+  background: #f24242;
+  /* border: 1px solid #f24242; */
+}
+
+.top .btn-area .basket {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+.digits{
+    padding: 10px 0 5px;
+    border-bottom: 1px solid #E8E8E8;
+}
+.digits:last-child{
+    border-bottom: none;
+}
+.digits .digits_name {
+    display: inline-block;
+    width: 70px;
+    line-height: 30px;
+    text-align: center;
+    color: #ffffff;
+    background: #FE9900;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-right: 10px;
+    margin-left: -10px;
+}
+.digits .digits_left{
+    float: left;
+    padding-bottom: 60px;
+}
+.baoxin .digits .digits_left{
+    padding-bottom: 100px;
+}
+.tishi .wenzi {
+    font-size: 14px;
+}
+.jiou .digits .digits_left{
+    padding-bottom: 0;
+}
+.digits .digits_cont{
+    margin-top: -6px;
+}
+.baoduan{
+    width: 100%;
+    margin: 50px auto 0;
+}
+.baoduan input{
+    width: 100%;
+    text-align: center;
+    border: none;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    margin-top: 10px;
+    letter-spacing: 10px;
+    line-height: 30px;
+}

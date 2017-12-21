@@ -1,0 +1,18 @@
+<view class="container">
+  <form bindsubmit="formSubmit" class="form">
+    <view class="section">
+      <text>真实姓名：</text>
+      <input name="truename" id="truename" placeholder="请输入姓名" value='{{userInfo.truename}}' bindblur="checkInput" />
+    </view>
+    <view class="section">
+      <text>身份证号：</text>
+      <input name="idcard" id="idcard" placeholder="请输入身份证号" value="{{userInfo.idcard}}" bindblur="checkInput" />
+    </view>
+    <view class="btn-area">
+      <button formType="submit" class="tj {{submit?'r':'g'}}">提交</button>
+    </view>
+  </form>
+  <view class="foot">
+    一个身份证仅支持绑定一个微信号，领奖、中奖、活动参与均以此为准，请认准填写您的信息，提交成功后不可再更改。
+  </view>
+</view>

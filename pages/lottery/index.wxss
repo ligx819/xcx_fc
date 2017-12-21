@@ -1,0 +1,109 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.ts {
+  display: block;
+  width: 100%;
+  height: 50rpx;
+  overflow-x: hidden;
+}
+
+.ts_box {
+  width: 100%;
+  position: relative;
+}
+
+.ts_text {
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  overflow-x: hidden;
+}
+
+.cont {
+  padding-bottom: 30px;
+  width: 100%;
+}
+
+/* .cont view{
+  display: inline-block;
+} */
+
+.cont .group {
+  width: 100%;
+  height: 100px;
+  line-height: 100px;
+  vertical-align: middle;
+  margin-bottom: 0;
+  border-bottom: 1px solid #e8e8e8;
+  position: relative;
+  /* display: inline-block!important; */
+}
+
+.cont .group:after {
+  content: ">";
+  display: inline-block;
+  color: #c6c6cb;
+  font-size: 30px;
+  position: absolute;
+  top: -3px;
+  right: 15px;
+}
+
+.cont .group .col_cont {
+  width: 100%;
+  height: 100px;
+  position: relative;
+  top: -12px;
+}
+
+.cont .group .col_img image {
+  width: 80px;
+  height: 80px;
+}
+
+.cont .group .col_img {
+  width: 28%;
+  height: 100px;
+  padding: 10px 0;
+  float: left;
+  text-align: center;
+  box-sizing: border-box;
+  /* display: inline-block;  */
+}
+
+.cont .group .colorName, .cont .group .tost {
+  color: #000;
+  font-size: 18px;
+  height: 25px;
+  display: block;
+}
+
+.cont .group .tost:last-child {
+  color: #a9a9a9;
+  font-size: 14px;
+  padding-top: 5px;
+}
+
+.fixed_foot {
+  text-align: center;
+  padding: 0;
+  line-height: normal;
+}
+
+.fixed_foot .tost {
+  position: relative;
+  top: -18px;
+  font-size: 18px;
+}
+
+.fixed_foot image {
+  width: 50px;
+  height: 50px;
+}

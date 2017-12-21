@@ -1,0 +1,26 @@
+<scroll-view scroll-y style="height:{{wHeight}}px;" class="container" bindscrolltolower="loadMore">
+  <view class='imgs'>
+    <swiper bindchange="roast" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{ads}}" wx:key="ad">
+        <swiper-item data-id="{{item.id}}" bindtap="goDetail">
+          <image src="{{item.titlepic2}}" class="slide-image" style='width:100%;height:100%;' />
+          <view class="p">{{item.title}}</view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="swiper-pagination">
+      <text wx:for="{{bullet}}" wx:key="bull" class="swiper-pagination-bullet {{!!item ? 'active' : ''}}"></text>
+    </view>
+  </view>
+  <view class="bar">
+    <view class="figure" wx:for="{{listData}}" wx:key="list" data-id="{{item.id}}" bindtap="goDetail">
+      <view class="figure_left">
+        <image src="{{item.titlepic}}"></image>
+      </view>
+      <view class="figure_right">
+        <view class="tt">{{item.title}}</view>
+        <view class="ts">{{item.befrom}}</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

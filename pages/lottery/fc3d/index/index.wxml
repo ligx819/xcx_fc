@@ -1,0 +1,72 @@
+<view class="container" id="select_ssq">
+  <view class="row bets_way">
+    <view wx:for="{{betName}}" wx:key="bn" class="col-4 {{item.isActive ? 'active' : ''}}" data-go="{{item.id}}" bindtap="cutBetName">{{item.name}}
+      <text class="fa fa-caret-down {{showWay ? 'rotate' : ''}}"></text>
+    </view>
+  </view>
+  <view class="list" wx:if="{{showWay}}">
+    <view class="ul" id="go_{{showWay.id}}">
+      <view wx:for="{{showWay.list}}" wx:key="sl" class="li {{item.isActive ? 'active' : ''}}" data-pid="{{showWay.id}}" data-cid="{{item.id}}" bindtap="cutBetWay">{{item.name}}</view>
+    </view>
+  </view>
+  <view class="top">
+    <text>{{showData.rule}}</text>
+    <view class="btn-area">
+      <button type="warn" size="mini" class="jx" bindtap="jiXuan">机选</button>
+      <button type="default" size="mini" class="basket" bindtap="goBasket">号码篮</button>
+    </view>
+  </view>
+  <view id="msg" class="clear {{isShowMsg? 'showMsg': 'hideMsg'}} ">已成功加入号码篮！</view>
+  <view class="cont">
+    <view class="select_ball {{showData.id}}">
+      <block wx:if="{{showData.hint != null}}">
+        <view wx:for="{{showData.hint}}" wx:key="sh" class="digits">
+          <view class="digits_left">
+            <text class="digits_name">{{item}}</text>
+          </view>
+          <view class="digits_cont">
+            <text wx:for="{{showData.balls[index]}}" wx:key="sbi" wx:for-item="sbs" wx:for-index="idx" class="red_ball {{sbs.isActive ? 'active' : ''}}" data-pi="{{index}}" data-ci="{{idx}}" bindtap="clickRedBall">{{sbs.ball}}</text>
+          </view>
+        </view>
+      </block>
+      <block wx:elif="{{showData.id == 'baodian'}}">
+        <view class="digits">
+          <view class="digits_cont">
+            <text wx:for="{{showData.balls[0]}}" wx:key="sbd" class="red_ball {{item.isActive ? 'active' : ''}}" data-pi="0" data-ci="{{index}}" bindtap="clickRedBall">{{item.ball}}</text>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view style="margin-bottom: 30px">
+          <view>开始号码</view>
+          <view>
+            <input type="number" maxlength="3" value="{{duanData.start}}" data-tp="start" bindblur="getInput"></input>
+          </view>
+        </view>
+        <view>
+          <view>结束号码</view>
+          <view>
+            <input type="number" maxlength="3" value="{{duanData.end}}" data-tp="end" bindblur="getInput"></input>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="fixed_foot">
+    <view class="fl">
+      <view id="empty_all" bindtap="clearSel">
+        <image src="../../../../images/qk.png" class="qk"></image>
+      </view>
+      <view class="jizhu">共<text class="red">{{jizhu}}</text>注</view>
+    </view>
+    <view class="fr">
+      <button type="default" size="mini" id="add_basket" bindtap="addBasket" disabled="{{canAdd}}" data-type="addBasket">加入号码篮</button>
+      <button type="warn" size="mini" id="sure" bindtap="addBasket" disabled="{{canFinish}}" data-type="endSelect">完成选号</button>
+    </view>
+  </view>
+  <include src="../../../../pages/tips.wxml" />
+</view>
+
+<block wx:if="{{isShowPoint}}">
+  <view animation="{{animationData}}" id="act" style="left:{{pointLeft}};top:{{pointTop}}"></view>
+</block>

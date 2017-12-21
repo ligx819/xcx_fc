@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/lottery/index",
+    "pages/lottery/ssq/index/index",
+    "pages/lottery/ssq/basket/basket",
+    "pages/lottery/fc3d/index/index",
+    "pages/lottery/fc3d/basket/basket",
+    "pages/lottery/gd_367/index/index",
+    "pages/lottery/gd_367/basket/basket",
+    "pages/lottery/gd_klsf/index/index",
+    "pages/lottery/gd_klsf/basket/basket",
+    "pages/lottery/gd_haocai/index/index",
+    "pages/lottery/gd_haocai/basket/basket",
+    "pages/lottery/plan/index/index",
+    "pages/lottery/plan/detail/detail",
+    "pages/lottery/plan/result/result",
+    "pages/prize/index",
+    "pages/my/status/index",
+    "pages/my/phone/index",
+    "pages/my/address/index",
+    "pages/hall/index",
+    "pages/hall/sub/index",
+    "pages/hall/zst/index",
+    "pages/hall/predict/index",
+    "pages/hall/predict/detail/detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}

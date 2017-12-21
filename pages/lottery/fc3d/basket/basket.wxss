@@ -1,0 +1,36 @@
+page {
+  background: #f3f3f3;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.fc3d_bets_way {
+  color: #a3a3a3;
+  margin: 0 5px;
+}
+
+.basket_cont .group .col_ball {
+  width: 58%;
+}
+
+.basket_cont .group .col_icon {
+  width: 32%;
+}
+
+@media (max-width: 360px) {
+  .basket_cont .group .col_ball {
+    width: 55%;
+  }
+
+  .basket_cont .group .col_icon {
+    width: 35%;
+  }
+}

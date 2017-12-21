@@ -1,0 +1,79 @@
+<view wx:if="{{showCont === 'normal'}}" class="container">
+  <view class="foot">
+    <button type="default" size="mini" id="scan" bindtap="scanCode">扫码支付</button>
+  </view>
+  <view class="bj_null"></view>
+  <view class="top">
+    <view class="top_t">
+      <view class="group">
+        <view class="col_img" wx:if="{{detail}}">
+          <image src="{{imgPath}}{{detail.game}}.jpg"></image>
+          <text>{{detail.gameName}}</text>
+        </view>
+        <!-- <view class="col_cont"> -->
+        <view wx:if="{{detail.type === '0'}}" class="tost">{{detail.title}}</view>
+        <view wx:if="{{detail.type === '1'}}" class="tost">
+          <view class="plan_tit">
+            <input type="text" value="{{detail.title}}" maxlength="20" data-title="{{detail.title}}" bindblur="btnSaveName" focus="{{focus}}" />
+            <image wx:if="{{editShow}}" src="../../../../images/edit.png" bindtap="btnEditName"></image>
+          </view>
+        </view>
+        <view class="tost" wx:if="{{detail}}">
+          <text class="pl">投注信息</text>
+          <text class="pr">{{detail.bets}}注 {{detail.bets_multiple}}倍 <text wx:if="{{detail.bets_term > 0}}">追{{detail.bets_term}}期</text></text>
+        </view>
+        <view class="tost" wx:if="{{detail}}">
+          <text class="pl">预计金额</text>
+          <text class="pr"><text class="red">{{detail.total_fee}}</text>元</text>
+        </view>
+        <!-- </view> -->
+      </view>
+    </view>
+    <view class="top_c" bindtap="changZoom">
+      <canvas canvas-id="mycanvas" class="qrcode" id="code"/>
+      <strong>{{detail.rand_no}}</strong>
+    </view>
+    <view class="top_f">
+      <block wx:for="{{detail.lists}}" wx:key="">
+        <view class="ball">
+          <view class="ball_n">
+            <text class="num">{{index+1}}</text>
+          </view>
+          <view class="ball_c">
+            <text class="red">{{item.red_ball}}</text>
+            <text class="blue">{{item.blue_ball}}</text>
+            <text wx:if="{{item.play_name}}" class="fc_name">({{item.play_name}})</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="ts">
+    <view class="ts_n">提示</view>
+    <view class="ts_c">1、屏幕亮度不足或者屏幕保护贴可能影响二维码读取；</view>
+    <view class="ts_c">2、完成投注后请确认彩票与您所选投注内容完全相符，中奖与否以彩票兑奖结果为准。</view>
+  </view>
+  <view class="foot">
+    <!-- 如果是临时投注单  -->
+    <block wx:if="{{detail.type === '0'}}">
+      <button class="btn btn-danger" bindtap="btnSaveCy">保存为常用投注单</button>
+      <button data-url="/pages/lottery/index" class="btn btn-default" bindtap='btnGo'>继续选号</button>
+    </block>
+    <!-- 如果是常用投注单  -->
+    <block wx:if="{{detail.type === '1'}}">
+      <button class="btn btn-default" bindtap="btnModify">修改</button>
+      <button class="btn btn-default" bindtap="btnCopy">复制</button>
+      <button class="btn btn-danger" bindtap="btnDel">删除</button>
+    </block>
+  </view>
+  <include src="../../../tips.wxml" />
+</view>
+<view wx:if="{{showCont === 'zoom'}}" class="zoomCont">
+  <view class="top_c" bindtap="changNormal">
+    <canvas canvas-id="mycanvas1" class="qrcode" id="code"/>
+    <strong>{{detail.rand_no}}</strong>
+  </view>
+  <view class="foot">
+    <button type="default" size="mini" id="scan" bindtap="scanCode">扫码支付</button>
+  </view>
+</view>

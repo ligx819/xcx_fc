@@ -1,0 +1,14 @@
+<view class="container">
+  <view id="{{djResult.id}}">
+    <view class="top">
+      <image src="../../images/{{djResult.img}}"></image>
+      <view wx:if="{{djResult.id === 'zj'}}">￥<text class="money">{{djResult.money}}</text></view>
+      <view wx:elif="{{djResult.id === 'wzj'}}">{{djResult.money}}</view>
+    </view>
+    <view class="ts">{{djResult.ts}}</view>
+    <view class="ts_t">{{djResult.ts_t}}</view>
+    <view class="foot">
+      <button class="btn btn-danger" bindtap='btnBack'>返回</button>
+    </view>
+  </view>
+</view>

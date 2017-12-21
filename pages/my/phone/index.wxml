@@ -1,0 +1,19 @@
+<view class="container">
+  <form bindsubmit="formSubmit" class="form">
+    <view class="section">
+      <text>手机号：</text>
+      <input name="phone" id="phone" maxlength="11" placeholder="请输入11位手机号" value='' bindblur="checkInput" />
+    </view>
+    <view class="section">
+      <text>验证码：</text>
+      <input name="code" id="code" placeholder="请输入手机验证码"/>
+      <button class="auth_code {{isSend ? 'send':''}}" disabled="{{disable}}" bindtap="sendCode">{{authCode}}</button>
+    </view>
+    <view class="btn-area">
+      <button formType="submit" class="tj {{submit?'r':'g'}}">立即绑定</button>
+    </view>
+  </form>
+  <view class="foot">
+    请认真填写手机号码，领奖、中奖、活动参与均以此为准
+  </view>
+</view>

@@ -1,0 +1,79 @@
+<view class="container" id="select_ssq">
+  <view class="emulator_header col-12">
+    <view class="e_h_title">
+      <view class="col-12 header_title text-center" bindtap="toggleTag">
+        <view class="h1" id="sel_c">
+          <text>{{showData.name}} </text>
+          <text class="fa fa-caret-down mi" id="mi"></text>
+        </view>
+      </view>
+      <view class="ul" id="sel_ul" hidden="{{tagHidden}}">
+        <view class="col-4 li" wx:for="{{listData}}" wx:key="item.id" data-type="{{item.id}}" bindtap="selType">
+          <text class="span {{item.isShow ? 'active':''}}">{{item.name}}</text>
+          <view class="cover_img p {{item.isShow ? 'active':''}}">
+            <image src="../../../../images/success.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view id="lz" class="row" wx:if="{{showData.id == 'Q2' || showData.id == 'Q3'}}">
+    <view class="col-6 {{showData.dsShow ? 'active':''}}" data-parent="{{showData.id}}" data-tp="d" bindtap="selSingle">单式</view>
+    <view class="col-6 {{showData.fsShow ? 'active':''}}" data-parent="{{showData.id}}" data-tp="f" bindtap="selSingle">复式</view>
+  </view>
+  <view class="top">
+    <block wx:if="{{showData.id == 'Q2' || showData.id == 'Q3'}}">
+      <text wx:if="{{showData.dsShow}}">{{showData.hint}}</text>
+      <text wx:else>{{showData.fsHint}}</text>
+    </block>
+    <block wx:else>
+      <text>{{showData.hint}}</text>
+    </block>
+    <view class="btn-area">
+      <button type="warn" size="mini" class="jx" bindtap="jiXuan">机选</button>
+      <button type="default" size="mini" class="basket" bindtap="goBasket">号码篮</button>
+    </view>
+  </view>
+  <view id="msg" class="clear {{isShowMsg? 'showMsg': 'hideMsg'}} ">已成功加入号码篮！</view>
+  <view class="cont">
+    <view class="select_ball">
+      <view class="red_cont">
+        <block wx:if="{{showData.id == 'Q2' || showData.id == 'Q3'}}">
+          <block wx:if="{{showData.dsShow}}">
+            <view wx:for="{{showData.dsBalls}}" wx:key="db" class="digits">
+              <view class="digits_left">
+                <text class="digits_name">第{{index == 0 ? '一' : index == 1 ? '二' : '三'}}位</text>
+              </view>
+              <view class="digits_cont">
+                <text wx:for="{{item}}" wx:key="dii" wx:for-item="dsb" wx:for-index="dsi" class="red_ball {{dsb.isActive? 'active': ''}}" bindtap="clickRedBall" data-pindex="{{index}}" data-index="{{dsi}}">{{dsb.ball}}</text>
+              </view>
+            </view>
+          </block>
+          <block wx:elif="{{showData.fsShow}}">
+            <text wx:for="{{showData.fsBalls}}" wx:key="fb" wx:for-item="fsb" wx:for-index="fsi" class="red_ball {{fsb.isActive? 'active': ''}}" bindtap="clickRedBall" data-index="{{fsi}}">{{fsb.ball}}</text>
+          </block>
+        </block>
+        <block wx:else>
+          <text wx:for="{{showData.fsBalls}}" wx:key="rb" class="red_ball {{item.isActive? 'active': ''}}" bindtap="clickRedBall" data-index="{{index}}">{{item.ball}}</text>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="fixed_foot">
+    <view class="fl">
+      <view id="empty_all" bindtap="clearSel">
+        <image src="../../../../images/qk.png" class="qk"></image>
+      </view>
+      <view class="jizhu">共<text class="red">{{jizhu}}</text>注</view>
+    </view>
+    <view class="fr">
+      <button type="default" size="mini" id="add_basket" bindtap="addBasket" disabled="{{canAdd}}" data-type="addBasket">加入号码篮</button>
+      <button type="warn" size="mini" id="sure" bindtap="addBasket" disabled="{{canFinish}}" data-type="endSelect">完成选号</button>
+    </view>
+  </view>
+  <include src="../../../../pages/tips.wxml" />
+</view>
+
+<block wx:if="{{isShowPoint}}">
+  <view animation="{{animationData}}" id="act" style="left:{{pointLeft}};top:{{pointTop}}"></view>
+</block>

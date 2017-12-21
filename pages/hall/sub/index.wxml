@@ -1,0 +1,22 @@
+<view class="mycontainer" wx:if="{{!isIos && detail}}">
+  <view class="main">
+    <view class="figure">
+      <image wx:if="{{detail.thumb}}" src="{{detail.thumb}}"></image>
+      <view class="figcaption">
+        <view class="h1">[ {{detail.name}} ]</view>
+        <view class="p">价　格：
+          <text>{{detail.price}}</text> 彩豆</view>
+        <view class="p">有效期：
+          <text>{{detail.expire}}</text> 天</view>
+        <view class="p">产品备注：{{detail.remarks}}</view>
+      </view>
+    </view>
+    <view class="footer">
+      <button class="btn btn-lg" bindtap="btnSubscribe">订 阅</button>
+    </view>
+  </view>
+</view>
+
+<view class="mycontainer" wx:else>
+  <image wx:if="{{iosThumb}}" src='{{iosThumb}}' mode='widthFix' style='width:100%;'></image>
+</view>

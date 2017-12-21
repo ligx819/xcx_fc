@@ -1,0 +1,16 @@
+.container{ position:relative; width:100%; max-width:600px; margin:0 auto; padding:0; }
+.top{text-align: center;margin: 60px 0 20px;position: relative}
+ #zj,#wzj,#ymsx, #djsb,#djcg{width: 100%;}
+ #zj .top image{width: 95%;} 
+#zj .top view,#wzj .top view{width: 100%;color: #ffffff;font-size: 32px;position: absolute;top: 58%}
+#zj .top view .money{font-size: 48px}
+.ts{text-align: center;color: #333333;font-size: 20px;}
+.ts_t{text-align: center;color: #666666;}
+.foot{text-align: center;margin-top: 60px}
+/* .foot a{width: 85%;height: 45px;line-height: 45px;border-radius: 6px;;display: inline-block;text-align: center;font-size: 20px} */
+/* .foot a.red{color: #ffffff;background: #d43b33;border: 1px solid #d43b33;margin-bottom: 30px} */
+/* .foot a.white{color: #333333;background: #ffffff;border: 1px solid #b2b2b2} */
+#wzj .top image{width: 60%}
+#ymsx .top{margin-bottom: 50px}
+#ymsx .top image{width: 50%}
+ #djsb .top image,#djcg .top image{width: 70%;margin-bottom: 30px} 

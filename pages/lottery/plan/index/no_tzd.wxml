@@ -1,0 +1,7 @@
+<view class="nc">
+  <image src="../../../../images/no_tzd.png"></image>
+  <text>您还没有投注单</text>
+</view>
+<view class="nf">
+  <navigator url="/pages/lottery/index" class="btn btn-danger">立即选号</navigator>
+</view>

@@ -1,0 +1,36 @@
+<view class="row top_nav">
+  <view class="radio">
+    <text>期数：</text>
+    <label class="radio-inline" wx:for="{{navData.radioData}}" wx:key="val" data-idx="{{index}}" bindtap='chooseRadio'>
+      <radio value="{{item.val}}" name="limit" id="term_number{{item.val}}" checked="{{item.checked}}" />近{{item.val}}期
+    </label>
+  </view>
+  <view class="row">
+    <view class="col-xs-4 date-picker">
+      <picker mode="date" value="{{navData.startDate}}" bindchange="startDateChange">
+        <view class="picker">{{navData.startDate}} <text class="fa fa-calendar"></text>
+        </view>
+      </picker>
+    </view>
+    <view class="col-xs-4 date-picker">
+      <picker mode="date" value="{{navData.endDate}}" bindchange="endDateChange">
+        <view class="picker">{{navData.endDate}} <text class="fa fa-calendar"></text>
+        </view>
+      </picker>
+    </view>
+    <view class="col-xs-3 date-picker">
+      <button id="send" type="button">提交</button>
+    </view>
+  </view>
+  <view class="row">
+    <view class="col-xs-12 checkbox">
+      <text>标注形式：</text>
+      <label class="checkbox-inline">
+        <checkbox value="omit" id="omit" />遗漏
+      </label>
+      <label class="checkbox-inline">
+        <checkbox value="fold_line" id="fold_line" />折线
+      </label>
+    </view>
+  </view>
+</view>

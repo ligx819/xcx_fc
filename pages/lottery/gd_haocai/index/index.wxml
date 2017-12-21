@@ -1,0 +1,64 @@
+<view class="container" id="select_ssq">
+  <view class="emulator_header col-12">
+    <view class="e_h_title">
+      <view class="col-12 header_title text-center" bindtap="toggleTag">
+        <view class="h1" id="sel_c">
+          <text>{{showData.name}} </text>
+          <text class="fa fa-caret-down mi" id="mi"></text>
+        </view>
+      </view>
+      <view class="ul" id="sel_ul" hidden="{{tagHidden}}">
+        <view class="col-4 li" wx:for="{{listData}}" wx:key="item.id" data-type="{{item.id}}" bindtap="selType">
+          <text class="span {{item.isShow ? 'active':''}}">{{item.name}}</text>
+          <view class="cover_img p {{item.isShow ? 'active':''}}">
+            <image src="../../../../images/success.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="top">
+    <text>{{showData.hint}}</text>
+    <view class="btn-area">
+      <button type="warn" size="mini" class="jx" bindtap="jiXuan">机选</button>
+      <button type="default" size="mini" class="basket" bindtap="goBasket">号码篮</button>
+    </view>
+  </view>
+  <view id="msg" class="clear {{isShowMsg? 'showMsg': 'hideMsg'}} ">已成功加入号码篮！</view>
+  <view class="cont emulator_sec">
+    <view class="select_ball">
+      <view class="red_cont sel_cc">
+        <block wx:if="{{showData.id == 'num'}}">
+          <view class="li" wx:for="{{showData.fsBalls}}" wx:key="rb" bindtap="clickRedBall" data-index="{{index}}">
+            <text class="red_ball {{item.isActive? 'active': ''}}">{{item.ball}}</text>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="li other" wx:for="{{showData.fsBalls}}" wx:key="rb2" bindtap="clickRedBall" data-index="{{index}}">
+            <view class="ui_ball other {{item.isActive? 'active': ''}}" id="{{showData.id == 'fw'? 'sel_fw' : ''}}">
+              <text>{{item.ball}}</text>
+              <text>{{item.mz}}</text>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="fixed_foot">
+    <view class="fl">
+      <view id="empty_all" bindtap="clearSel">
+        <image src="../../../../images/qk.png" class="qk"></image>
+      </view>
+      <view class="jizhu">共<text class="red">{{jizhu}}</text>注</view>
+    </view>
+    <view class="fr">
+      <button type="default" size="mini" id="add_basket" bindtap="addBasket" disabled="{{canAdd}}" data-type="addBasket">加入号码篮</button>
+      <button type="warn" size="mini" id="sure" bindtap="addBasket" disabled="{{canFinish}}" data-type="endSelect">完成选号</button>
+    </view>
+  </view>
+  <include src="../../../../pages/tips.wxml" />
+</view>
+
+<block wx:if="{{isShowPoint}}">
+  <view animation="{{animationData}}" id="act" style="left:{{pointLeft}};top:{{pointTop}}"></view>
+</block>

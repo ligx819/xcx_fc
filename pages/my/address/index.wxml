@@ -1,0 +1,22 @@
+<view class="container">
+  <form bindsubmit="formSubmit" class="form">
+    <view class="section sel">
+      <text class="pl">所在地区：</text>
+      <picker class="pr {{isSelect?'':'g'}}" mode="multiSelector" bindtap="addData" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" bindblur="checkInput" value="{{multiIndex}}" range="{{multiArray}}">
+        <view class="picker">
+         {{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}} {{multiArray[2][multiIndex[2]]}}>
+        </view>
+      </picker>
+    </view>
+    <view class="section ta">
+      <text class="pl">详细地址：</text>
+      <textarea class="pr" name="address" id="address" placeholder="请输入详细地址" value="{{userInfo.address}}" bindblur="checkInput"/>
+    </view>
+    <view class="btn-area">
+      <button formType="submit" class="tj {{submit?'r':'g'}}">保存</button>
+    </view>
+  </form>
+  <view class="foot">
+   请认真填写手机号码，领奖、中奖、活动参与均以此为准
+  </view>
+</view>

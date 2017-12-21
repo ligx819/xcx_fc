@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="ts">
+    <view class="ts_box">
+      <view class="ts_text" style="left:{{marqueeDistance}}px;font-size: {{size}}px;">
+        <text>{{text}}</text>
+        <text wx:if="{{marqueecopy_status}}" style="margin-left:{{marquee_margin}}px;">{{text}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="cont">
+    <block wx:for="{{lottery_list}}" wx:key="">
+      <navigator url="./{{item.game}}/index/index" class="clear" bindtap="clearData" wx:if="{{item.state}}">
+        <view class="group">
+          <view class="col_img">
+            <image src="../../images/{{item.game}}.jpg" class="ssq"></image>
+          </view>
+          <view class="col_cont">
+            <text class="colorName">{{item.game_name}}</text>
+            <text class="tost">{{item.remark}}</text>
+          </view>
+        </view>
+      </navigator>
+    </block>
+  </view>
+  <view class="fixed_foot">
+    <navigator url="./plan/index/index">
+      <image src="../../images/book.png"></image>
+      <text class="tost">我的投注单</text>
+    </navigator>
+  </view>
+</view>

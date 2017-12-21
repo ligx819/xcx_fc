@@ -1,0 +1,13 @@
+<import src="../../../wxParse/wxParse.wxml"/>
+<view class="swiper-container" id="cms_c">
+  <view class="header">
+    <view class="h1">{{detail.title}}</view>
+    <view class="p">
+      <text class="span">{{detail.befrom}}</text>
+      <text class="time">{{detail.newstime}}</text>
+    </view>
+  </view>
+  <view class="cont">
+    <view class="p"><template is="wxParse" data="{{wxParseData:newstext.nodes}}"/></view>
+  </view>
+</view>

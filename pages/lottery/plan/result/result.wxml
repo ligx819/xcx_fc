@@ -1,0 +1,58 @@
+<view class="container">
+  <!-- 保存成功  -->
+  <view wx:if="{{result === 'save_success'}}">
+    <view class="save_icon">
+      <image src="../../../../images/save_success.png"></image>
+    </view>
+    <view class="save_hint">已保存在“
+      <navigator url="{{url}}">{{plan_name}}</navigator>”，可随时查看和使用</view>
+    <view class="save_foot">
+      <view>
+        <button data-url="/pages/lottery/plan/detail/detail?id={{id}}" class="btn btn-danger" bindtap='btnGo'>查看投注单详情</button>
+      </view>
+      <view>
+      <button data-url="/pages/lottery/plan/index/index" class="btn btn-default" bindtap="btnGo">返回我的投注单</button>
+      </view>
+    </view>
+  </view>
+  <!-- 保存失败  -->
+  <view wx:if="{{result === 'save_failed'}}">
+    <view class="save_icon">
+      <image src="../../../../images/save_failed.jpg"></image>
+    </view>
+    <!-- <view class="save_hint">你可返回“号码篮”重新生成投注单或重新选号</view> -->
+    <view class="save_foot">
+      <view>
+        <button class="btn btn-danger" bindtap="btnBack">返回</button>
+      </view>
+      <view>
+      <button data-url="/pages/lottery/index" class="btn btn-default" bindtap="btnGo">重新选号</button>
+      </view>
+    </view>
+  </view>
+  <!-- 删除成功  -->
+  <view wx:if="{{result === 'del_success'}}">
+    <view class="save_icon">
+      <image src="../../../../images/del_success.jpg"></image>
+    </view>
+    <view class="save_foot">
+      <view>
+      <button data-url="/pages/lottery/plan/index/index" class="btn btn-danger" bindtap='btnGo'>返回方案列表</button>
+      </view>
+      <view>
+      <button data-url="/pages/lottery/index" class="btn btn-default" bindtap='btnGo'>前往选号</button>
+      </view>
+    </view>
+  </view>
+  <!-- 删除失败  -->
+  <view wx:if="{{result === 'del_failed'}}">
+    <view class="save_icon">
+      <image src="../../../../images/del_failed.jpg"></image>
+    </view>
+    <view class="save_foot">
+      <view>
+      <button data-url="/pages/lottery/plan/detail/detail?id={{id}}" class="btn btn-danger" bindtap='btnGo'>查看投注单详情</button>
+      </view>
+    </view>
+  </view>
+</view>

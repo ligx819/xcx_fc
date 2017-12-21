@@ -1,0 +1,1 @@
+<view id="plan_tost" wx:if="{{isShowTost}}">{{tostCont}}</view>

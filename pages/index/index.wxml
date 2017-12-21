@@ -1,0 +1,69 @@
+<!--index.wxml-->
+<view wx:if="{{indexShow === 'index'}}" class="container">
+  <view class="i_top">
+    <view class="col-4" bindtap="indexGo" data-go="sys">
+      <image src="../../images/saoyisao.png"></image>
+      <text>扫一扫</text>
+    </view>
+    <view class="col-4" bindtap="indexGo" data-go="tzd">
+      <image src="../../images/dz_tzd.png"></image>
+      <text>电子投注单</text>
+    </view>
+    <view class="col-4" bindtap="indexGo" data-go="jkp">
+      <image src="../../images/jkp_dj.png"></image>
+      <text>即开票兑奖</text>
+    </view>
+  </view>
+  <view class="i_cont">
+    <block wx:for="{{open_lists}}" wx:key="name">
+      <view class="list-group" wx:if="{{item.red_ball[0]}}">
+        <view class="list-group-item" bindtap="goHall" data-id="{{index}}">
+          <view class="h5"><text class="ball_name">{{item.name}}</text><text class="nper">第{{item.term}}期</text><text class="pr">{{item.kj_time}}</text></view>
+          <view class="i_ball">
+            <block wx:for="{{item.red_ball}}" wx:for-item="ball" wx:key="num">
+              <text class="ball red_all_ball">{{ball}}</text>
+            </block>
+            <text wx:if="{{item.type==='fc3d'}}" class="shiji">试机号：{{item.test_num}}</text>
+            <text class="ball blue_all_ball" wx:if="{{item.blue_ball && item.blue_ball !=''}}">{{item.blue_ball}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+<view wx:if="{{indexShow === 'my'}}" class="container">
+  <view class="my_top">
+    <view class="img">
+      <image wx:if="{{userInfo.headimgurl}}" src="{{userInfo.headimgurl}}"></image>
+    </view>
+    <text>{{userInfo.nickname}}</text>
+  </view>
+  <view class="my_cont">
+    <block wx:for="{{myCont}}" wx:key="term">
+      <navigator url="{{item.url}}">
+        <view class="my_group" data-index="{{index}}">
+          <view class="pl">
+            <image src="../../images/{{item.img}}"></image>
+            <text>{{item.title}}</text>
+          </view>
+          <view class="pr">
+            <text>{{item.state}}</text>
+          </view>
+        </view>
+      </navigator>
+    </block>
+  </view>
+</view>
+<view class="fixed_foot">
+  <view class="col-6 {{indexShow === 'index'?'active':''}}" bindtap="selIndex" data-go="index">
+    <image wx:if="{{indexShow === 'index'}}" src="../../images/shy_active.png"></image>
+    <image wx:else src="../../images/shy.png"></image>
+    <text>首页</text>
+  </view>
+  <view class="col-6 {{indexShow === 'my'?'active':''}}" bindtap="selIndex" data-go="my">
+    <image wx:if="{{indexShow === 'my'}}" src="../../images/my_active.png"></image>
+    <image wx:else src="../../images/my.png"></image>
+    <text>我的</text>
+  </view>
+  <include src="../tips.wxml" />
+</view>

@@ -1,0 +1,41 @@
+<view class="container" id="select_ssq">
+  <view class="top">
+    <text>{{text}}</text>
+    <view class="btn-area">
+      <button type="warn" size="mini" class="jx" bindtap="jiXuan">机选</button>
+      <button type="default" size="mini" class="basket" bindtap="goBasket">号码篮</button>
+    </view>
+  </view>
+  <view id="msg" class="clear {{isShowMsg?'showMsg':'hideMsg'}}">已成功加入号码篮！</view>
+  <view class="cont">
+    <view class="select_ball">
+      <view class="red_cont">
+        <block wx:for="{{balls.redBalls}}" wx:key="">
+          <text class="red_ball {{item.isActive?'active':''}}" bindtap="clickRedBall" data-index="{{index}}">{{item.ball}}</text>
+        </block>
+      </view>
+      <view class="blue_cont">
+        <block wx:for="{{balls.blueBalls}}" wx:key="">
+          <text class="blue_ball {{item.isActive?'active':''}}" bindtap="clickBlueBall" data-index="{{index}}">{{item.ball}}</text>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="fixed_foot">
+    <view class="fl">
+      <view id="empty_all" bindtap="clearSel">
+        <image src="../../../../images/qk.png" class="qk"></image>
+      </view>
+      <view class="jizhu">共<text class="red">{{jizhu}}</text>注</view>
+    </view>
+    <view class="fr">
+      <button type="default" size="mini" id="add_basket" bindtap="addBasket" disabled="{{canAdd}}" data-type="addBasket">加入号码篮</button>
+      <button type="warn" size="mini" id="sure" bindtap="addBasket" disabled="{{canFinish}}" data-type="endSelect">完成选号</button>
+    </view>
+  </view>
+  <include src="../../../../pages/tips.wxml" />
+</view>
+
+<block wx:if="{{isShowPoint}}">
+  <view animation="{{animationData}}" id="act" style="left:{{pointLeft}};top:{{pointTop}}"></view>
+</block>

@@ -1,0 +1,38 @@
+<view class="container basket" id="basket_ssq">
+  <view class="fixed_top">
+    <view class="btn">
+      <button type="default" size="mini" id="zixuan" bindtap="goSelect">自选号码</button>
+    </view>
+    <view class="btn">
+      <button type="default" size="mini" id="suiji_one" bindtap="randomNum" data-rand="1">+机选1注</button>
+    </view>
+    <view class="btn">
+      <button type="default" size="mini" id="suiji_five" bindtap="randomNum" data-rand="5">+机选5注</button>
+    </view>
+    <view class="btn">
+      <button type="default" size="mini" id="empty_basket" bindtap="emptyList">清空列表</button>
+    </view>
+  </view>
+  <view class="null_tost {{isShowNull?'showNull':'hideNull'}}">您还未进行选号，试试机选1注。</view>
+  <view class="basket_cont">
+    <block wx:for="{{basketBalls}}">
+      <view class="group {{item.cHeight}}" data-bet="{{item.bet}}" data-index="{{index}}">
+        <view class="col_icon {{item.cHeight}}">
+          <icon type="clear" size="23" color="#E5E5E5" data-index="{{index}}" bindtap="removeOne" />
+        </view>
+        <view class="col_ball {{item.cHeight}}" data-index="{{index}}" bindtap="reEdit">
+          <text class="red">{{item.red}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="fixed_foot {{!isShowNull?'showNull':'hideNull'}}">
+    <view class="plan_name">投注单名称<input maxlength="20" type="text" id="plan_name" value="{{planName}}" bindblur="whatName" /></view>
+    <view class="plan_detail">
+      <view class="col-4">投 <input type="number" id="beishu" value="{{planBei}}" bindblur="whatBei"/> 倍</view>
+      <view class="col-4">共 <text class="red" id="basket_num">{{bjz}}</text> 注</view>
+      <view class="col-4"><button type="warn" size="mini" id="save_plan" data-id="{{options.id}}" bindtap="btnSavePlan">{{actionName}}</button></view>
+    </view>
+  </view>
+  <include src="../../tips.wxml" />
+</view>

@@ -1,0 +1,93 @@
+.container {
+  height: 100%;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx;
+  box-sizing: border-box;
+} 
+
+.btn {
+  display: inline-block;
+  width: 80%;
+  line-height: 30px;
+  font-size: 18px;
+  padding: 6px 12px;
+  margin: 0 auto 20px;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.save_foot navigator {
+  padding-left: 0;
+  padding-right: 0;
+}
+.btn-danger {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+.save_icon, .del_icon {
+  width: 100%;
+  padding-top: 30px;
+  text-align: center;
+}
+
+.del_icon {
+  margin-bottom: 50px;
+}
+
+.save_icon image, .del_icon image {
+  width: 260px;
+  height: 341px;
+  margin-bottom: 20px;
+}
+
+.save_hint {
+  /* width: 90%; */
+  line-height: 30px;
+  color: #6b6b6b;
+  text-align: center;
+  margin: 0 auto 35px;
+}
+
+.save_hint navigator {
+  display: inline-block;
+  color: #d43b33;
+  text-decoration: underline;
+}
+
+.save_foot view, .del_foot view {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.save_foot view .btn, .del_foot view .btn {
+  width: 85%;
+  line-height: 35px;
+  font-size: 18px;
+  /* background: #fbfafc; */
+}
+
+.btn-danger {
+  color: #fff !important;
+}

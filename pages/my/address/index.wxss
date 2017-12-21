@@ -1,0 +1,13 @@
+.container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+page {
+  background: #e0e0e0;
+}
+button::after{
+  content: none;
+}

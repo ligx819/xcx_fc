@@ -1,0 +1,103 @@
+.container {
+  padding: 0;
+  align-items: left;
+}
+
+.imgs {
+  width: 100%;
+  position: relative;
+}
+
+.imgs .swiper-pagination {
+  width: 100%;
+  height: 20px;
+  text-align: right;
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  z-index: 10;
+}
+
+.imgs swiper-item .p {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: left;
+  text-indent: 10px;
+  color: #fff;
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  z-index: 888;
+  display: block;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+}
+
+.imgs .swiper-pagination-bullet {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 100%;
+  margin-right: 10px;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 1;
+}
+
+.imgs .swiper-pagination-bullet.active {
+  width: 7px;
+  height: 7px;
+  background: rgb(255, 255, 255);
+}
+
+.imgs .swiper-pagination .ts {
+  position: absolute;
+  left: 10px;
+}
+
+.bar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px 5px;
+  box-sizing: border-box;
+}
+
+.bar .figure {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 0;
+  border-bottom: 1px solid #ececec;
+}
+
+.bar .figure .figure_left {
+  width: 25%;
+  min-width: 80px;
+  height: 70px;
+  text-align: center;
+}
+
+.bar .figure .figure_right {
+  width: 70%;
+  height: 70px;
+}
+
+.bar .figure .figure_right .tt {
+  color: #000;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 5px;
+}
+
+.bar .figure .figure_right .ts {
+  color: #acacac;
+  font-size: 12px;
+}
+
+.bar .figure image {
+  width: 80px;
+  height: 70px;
+}

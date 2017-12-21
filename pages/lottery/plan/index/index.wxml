@@ -1,0 +1,106 @@
+<view class="container">
+  <view class="header">
+    <view class="nav nav-tabs">
+      <view class="col-6 {{flag?'':'active'}}" data-flag="0" bindtap="changeType">临时投注单
+        <text class="caret {{lsRotate?'rotate':''}}" data-type='ls' catchtap="chooseType"></text>
+      </view>
+      <view class="col-6 {{flag?'active':''}}" data-flag="1" bindtap="changeType">常用投注单
+        <text class="caret {{cyRotate?'rotate':''}}" data-type='cy' catchtap="chooseType"></text>
+      </view>
+    </view>
+    <view class="dropdown-menu ls" hidden="{{lsFlag?true:flase}}">
+      <view data-type="all" bindtap="selType">全部</view>
+      <block wx:for="{{lottery_list}}" wx:key="">
+        <view data-type="{{item.game}}" bindtap="selType">{{item.game_name}}</view>
+      </block>
+    </view>
+    <view class="dropdown-menu cy" hidden="{{cyFlag?true:flase}}">
+      <view data-type="all" bindtap="selType">全部</view>
+      <block wx:for="{{lottery_list}}" wx:key="">
+        <view data-type="{{item.game}}" bindtap="selType">{{item.game_name}}</view>
+      </block>
+    </view>
+  </view>
+  <view class="plan">
+    <!-- 临时投注单 -->
+    <view hidden="{{flag?true:false}}">
+      <view wx:if="{{allBalls.lsBalls.length > 0}}">
+        <block wx:for="{{allBalls.lsBalls}}" wx:key="">
+          <view class="group" data-id="{{item.id}}" bindtap="bindDetail" wx:if="{{gameFlag[item.game]}}">
+            <image src="../../../../images/tzd_{{item.game}}.png" class="tzd_img"></image>
+            <view>
+              <view class="plan_tit">{{item.title}}
+                <image src="../../../../images/save.png" data-id="{{item.id}}" catchtap="btnSaveCy"></image>
+              </view>
+              <view class="bet_num">
+                <view class="bl">
+                  <text>投注号码：</text>
+                </view>
+                <view class="br">
+                  <block wx:for="{{item.lists}}" wx:key="" wx:for-item="balls">
+                    <view wx:if="{{item.game != 'ssq' && item.game != 'gd_367'}}">
+                      <text class="red">{{balls.red_ball}}</text>
+                      <text class="fc_name">({{balls.play_name}})</text>
+                    </view>
+                    <view wx:else>
+                      <text class="red">{{balls.red_ball}}</text>
+                      <text class="blue">{{balls.blue_ball}}</text>
+                    </view>
+                  </block>
+                </view>
+              </view>
+              <view>
+                <text class="cont_left">投注信息：</text>
+                <text>{{item.bets}}注 {{item.bets_multiple}}倍 <text wx:if="{{item.bets_term > 0}}">追{{item.bets_term}}期</text></text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view wx:else class="nt">
+        <include src="no_tzd.wxml" />
+      </view>
+    </view>
+    <!-- 常用投注单  -->
+    <view hidden="{{flag?false:true}}">
+      <view wx:if="{{allBalls.cyBalls.length > 0}}">
+        <block wx:for="{{allBalls.cyBalls}}" wx:key="">
+          <view class="group" data-id="{{item.id}}" bindtap="bindDetail" wx:if="{{gameFlag[item.game]}}">
+            <image src="../../../../images/tzd_{{item.game}}.png" class="tzd_img"></image>
+            <view>
+              <view class="plan_tit">
+                <input type="text" value="{{item.title}}" maxlength="20" data-title="{{item.title}}" data-id="{{item.id}}" data-index="{{index}}" bindblur="btnSaveName" focus="{{item.focus}}" />
+                <image wx:if="{{item.edit}}" src="../../../../images/edit.png" data-index="{{index}}" catchtap="btnEditName"></image>
+              </view>
+              <view class="bet_num">
+                <view class="bl">
+                  <text>投注号码：</text>
+                </view>
+                <view class="br">
+                  <block wx:for="{{item.lists}}" wx:key="" wx:for-item="balls">
+                    <view wx:if="{{item.game != 'ssq' && item.game != 'gd_367'}}">
+                      <text class="red">{{balls.red_ball}}</text>
+                      <text class="fc_name">({{balls.play_name}})</text>
+                    </view>
+                    <view wx:else>
+                      <text class="red">{{balls.red_ball}}</text>
+                      <text class="blue">{{balls.blue_ball}}</text>
+                    </view>
+                  </block>
+                </view>
+              </view>
+              <view>
+                <text class="cont_left">投注信息：</text>
+                <text>{{item.bets}}注 {{item.bets_multiple}}倍 <text wx:if="{{item.bets_term > 0}}">追{{item.bets_term}}期</text></text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view wx:else class="nt">
+        <include src="no_tzd.wxml" />
+      </view>
+    </view>
+  </view>
+  <include src="../../../tips.wxml" />
+</view>

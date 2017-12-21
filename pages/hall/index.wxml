@@ -1,0 +1,276 @@
+<view class="container {{!thisIssue?'no':''}}">
+  <view wx:if="{{!!thisIssue}}" class="detail">
+    <view class="fixed_top">
+      <view class="col-6 active">本期详情</view>
+      <view class="col-6" bindtap='goMore'>更多期数</view>
+    </view>
+    <view class="bg_null"></view>
+    <view class="table one">
+      <view class="tr">
+        <view class="th" style='width:40%'>{{listData.term}}</view>
+        <view class="th" style='width:60%'>{{listData.publish_time}}</view>
+      </view>
+      <block wx:if="{{currentType === 'fc3d'}}">
+        <view class="tr">
+          <view class="td" style='width:40%'>中奖号</view>
+          <view class="td" style='width:60%'>试机号</view>
+        </view>
+        <view class="tr">
+          <view class="td" style='width:40%'>
+            <text wx:for="{{listData.red_ball}}" wx:key="id" class="red_ball active">{{item}}</text>
+          </view>
+          <view class="td" style='width:60%'>
+            <text class="red shj_ball">{{listData.test_num}}</text>
+          </view>
+        </view>
+      </block>
+      <block wx:elif="{{currentType == 'gd_haocai'}}">
+        <view class='tr one'>
+          <text class='red_ball active'>{{listData.lucky_num}}</text>
+          <text class='red_ball active'>{{listData.lucky_animal}}</text>
+          <text class='red_ball active'>{{listData.lucky_season}}</text>
+          <text class='red_ball active'>{{listData.lucky_position}}</text>
+        </view>
+      </block>
+      <block wx:else>
+        <view class='tr one'>
+          <block wx:for="{{listData.red_ball}}" wx:key="term">
+            <text class='red_ball active'>{{item}}</text>
+          </block>
+          <text class='blue_ball active' wx:if="{{listData.blue_ball && listData.blue_ball[0]}}">{{listData.blue_ball}}</text>
+        </view>
+      </block>
+    </view>
+    <block wx:if="{{currentType === 'ssq' || currentType === 'sevenlc' || currentType === 'fc3d'}}">
+      <view class="table two">
+        <view class="tr">
+          <view class="th">全国销量(元)</view>
+          <view class="th" wx:if="{{listData.df}}">{{listData.byname}}销量(元)</view>
+          <view class="th">奖池奖金(元)</view>
+        </view>
+        <view class="tr">
+          <view class="td">{{listData.sales}}</view>
+          <view class="th" wx:if="{{listData.df}}">{{listData.df.sales}}</view>
+          <view class="td">{{listData.lucky}}</view>
+        </view>
+      </view>
+      <view class="table thr">
+        <view class="tr">
+          <view class="th">奖项</view>
+          <view class="th">全国中奖(注)</view>
+          <view class="th" wx:if="{{listData.df}}">{{listData.byname}}中奖(注)</view>
+          <view class="th">每注金额(元)</view>
+        </view>
+        <view class="tr">
+          <view class="td one">一等奖</view>
+          <view class="td two">{{listData.prize1_amount}}</view>
+          <view class="th" wx:if="{{listData.df}}">{{listData.df.prize1_amount}}</view>
+          <view class="td red thr">{{listData.prize1_bonus}}</view>
+        </view>
+        <view class="tr">
+          <view class="td one">二等奖</view>
+          <view class="td two">{{listData.prize2_amount}}</view>
+          <view class="th" wx:if="{{listData.df}}">{{listData.df.prize2_amount}}</view>
+          <view class="td red thr">{{listData.prize2_bonus}}</view>
+        </view>
+        <view class="tr">
+          <view class="td one">三等奖</view>
+          <view class="td two">{{listData.prize3_amount}}</view>
+          <view class="th" wx:if="{{listData.df}}">{{listData.df.prize3_amount}}</view>
+          <view class="td red thr">{{listData.prize3_bonus}}</view>
+        </view>
+        <view class="tr" wx:if="{{currentType != 'fc3d'}}">
+          <view class="td one">四等奖</view>
+          <view class="td two">{{listData.prize4_amount}}</view>
+          <view class="th" wx:if="{{listData.df}}">{{listData.df.prize4_amount}}</view>
+          <view class="td red thr">{{listData.prize4_bonus}}</view>
+        </view>
+        <view class="tr" wx:if="{{currentType != 'fc3d'}}">
+          <view class="td one">五等奖</view>
+          <view class="td two">{{listData.prize5_amount}}</view>
+          <view class="th" wx:if="{{listData.df}}">{{listData.df.prize5_amount}}</view>
+          <view class="td red thr">{{listData.prize5_bonus}}</view>
+        </view>
+        <view class="tr" wx:if="{{currentType != 'fc3d'}}">
+          <view class="td one">六等奖</view>
+          <view class="td two">{{listData.prize6_amount}}</view>
+          <view class="th" wx:if="{{listData.df}}">{{listData.df.prize6_amount}}</view>
+          <view class="td red thr">{{listData.prize6_bonus}}</view>
+        </view>
+        <view class="tr" wx:if="{{currentType == 'sevenlc'}}">
+          <view class="td one">七等奖</view>
+          <view class="td two">{{listData.prize7_amount}}</view>
+          <view class="th" wx:if="{{listData.df}}">{{listData.df.prize7_amount}}</view>
+          <view class="td red thr">{{listData.prize7_bonus}}</view>
+        </view>
+      </view>
+      <view wx:if="{{currentType === 'fc3d'}}" class="table four">
+        <view class="tr">
+          <view class="td active">和值</view>
+          <view class="td">{{listData.info.sum}}</view>
+          <view class="td active">跨度</view>
+          <view class="td">{{listData.info.span}}</view>
+        </view>
+        <view class="tr">
+          <view class="td active">奇偶</view>
+          <view class="td">{{listData.info.odd_even}}</view>
+          <view class="td active">大小</view>
+          <view class="td">{{listData.info.big_small}}</view>
+        </view>
+        <view class="tr">
+          <view class="td active">质合</view>
+          <view class="td">{{listData.info.prime_he}}</view>
+          <view class="td active">除三</view>
+          <view class="td">{{listData.info.mod_3}}</view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="table two">
+        <view class="tr">
+          <view class="th">总销量(元)</view>
+          <view class="th">奖池奖金(元)</view>
+        </view>
+        <view class="tr">
+          <view class="td">{{listData.sales}}</view>
+          <view class="td">{{listData.lucky}}</view>
+        </view>
+      </view>
+      <view class="table ssc">
+        <view class="tr">
+          <view class="th one">奖项</view>
+          <view class="th two">中奖注数</view>
+          <view class="th thr">每注金额(元)</view>
+          <view class="th thr">总奖金额(元)</view>
+        </view>
+        <block wx:if="{{currentType != 'gd_haocai'}}">
+        <view class="tr">
+          <view class="td one">一等奖</view>
+          <view class="td two">{{listData.prize1_amount}}</view>
+          <view class="td red thr">{{listData.prize1_bonus}}</view>
+          <view class="td thr">{{listData.prize1_amount * listData.prize1_bonus}}</view>
+        </view>
+        <view class="tr">
+          <view class="td one">二等奖</view>
+          <view class="td two">{{listData.prize2_amount}}</view>
+          <view class="td red thr">{{listData.prize2_bonus}}</view>
+          <view class="td thr">{{listData.prize2_amount * listData.prize2_bonus}}</view>
+        </view>
+        <block wx:if="{{currentType == 'gd_367'}}">
+        <view class="tr">
+          <view class="td one">三等奖</view>
+          <view class="td two">{{listData.prize3_amount}}</view>
+          <view class="td red thr">{{listData.prize3_bonus}}</view>
+          <view class="td thr">{{listData.prize3_amount * listData.prize3_bonus}}</view>
+        </view>
+        <view class="tr">
+          <view class="td one">四等奖</view>
+          <view class="td two">{{listData.prize4_amount}}</view>
+          <view class="td red thr">{{listData.prize4_bonus}}</view>
+          <view class="td thr">{{listData.prize4_amount * listData.prize4_bonus}}</view>
+        </view>
+        <view class="tr">
+          <view class="td one">五等奖</view>
+          <view class="td two">{{listData.prize5_amount}}</view>
+          <view class="td red thr">{{listData.prize5_bonus}}</view>
+          <view class="td thr">{{listData.prize5_amount * listData.prize5_bonus}}</view>
+        </view>
+        <view class="tr">
+          <view class="td one">六等奖</view>
+          <view class="td two">{{listData.prize6_amount}}</view>
+          <view class="td red thr">{{listData.prize6_bonus}}</view>
+          <view class="td thr">{{listData.prize6_amount * listData.prize6_bonus}}</view>
+        </view>
+        </block>
+        </block>
+        <block wx:else>
+        <view class="tr">
+          <view class="td one">数字</view>
+          <view class="td two">{{listData.prize1_amount}}</view>
+          <view class="td red thr">{{listData.prize1_bonus}}</view>
+          <view class="td thr">{{listData.prize1_amount * listData.prize1_bonus}}</view>
+        </view>
+        <view class="tr">
+          <view class="td one">生宵</view>
+          <view class="td two">{{listData.prize2_amount}}</view>
+          <view class="td red thr">{{listData.prize2_bonus}}</view>
+          <view class="td thr">{{listData.prize2_amount * listData.prize2_bonus}}</view>
+        </view>
+        <view class="tr">
+          <view class="td one">季节</view>
+          <view class="td two">{{listData.prize3_amount}}</view>
+          <view class="td red thr">{{listData.prize3_bonus}}</view>
+          <view class="td thr">{{listData.prize3_amount * listData.prize3_bonus}}</view>
+        </view>
+        <view class="tr">
+          <view class="td one">方位</view>
+          <view class="td two">{{listData.prize4_amount}}</view>
+          <view class="td red thr">{{listData.prize4_bonus}}</view>
+          <view class="td thr">{{listData.prize4_amount * listData.prize4_bonus}}</view>
+        </view>
+        </block>
+      </view>
+      <view class="table ssc" wx:if="{{currentType != 'gd_haocai'}}">
+        <view class="tr">
+          <view class="th one">奖项</view>
+          <view class="th two">中奖注数</view>
+          <view class="th thr">每注金额(元)</view>
+          <view class="th thr">总奖金额(元)</view>
+        </view>
+        <view class="tr">
+          <view class="td one">好彩2</view>
+          <view class="td two">{{listData.type == 'gd_265'?listData.prize3_amount:listData.prize7_amount}}</view>
+          <view class="td red thr">{{listData.type == 'gd_265'?listData.prize3_bonus:listData.prize7_bonus}}</view>
+          <view class="td thr">{{listData.type == 'gd_265'?listData.prize3_amount * listData.prize3_bonus:listData.prize8_amount * listData.prize8_bonus}}</view>
+        </view>
+        <view class="tr">
+          <view class="td one">好彩3</view>
+          <view class="td two">{{listData.type == 'gd_265'?listData.prize4_amount:listData.prize8_amount}}</view>
+          <view class="td red thr">{{listData.type == 'gd_265'?listData.prize4_bonus:listData.prize8_bonus}}</view>
+          <view class="td thr">{{listData.type == 'gd_265'?listData.prize4_amount * listData.prize4_bonus:listData.prize8_amount * listData.prize8_bonus}}</view>
+        </view>
+      </view>
+    </block>
+    <view class="ts">数据以{{listData.byname}}福利彩票发行中心公告为准</view>
+  </view>
+  <scroll-view wx:else scroll-y="true" style="height:{{wHeight}}px;" class="more" bindscrolltolower="loadMore">
+    <block wx:for="{{moreData}}" wx:key="id">
+      <view class="list-group-item" bindtap="goIssue" data-term="{{item.term}}">
+        <view>
+          <text>第{{item.term}}期</text>
+          <text class="pr">{{item.publish_time}}</text>
+        </view>
+        <view wx:if="{{currentType != 'gd_haocai'}}">
+          <text wx:for="{{item.red_ball}}" wx:key="id" wx:for-item="rb" wx:for-index="idx" class="red_ball {{index === 0 ? 'active':''}}">{{rb}}</text>
+          <block wx:if="{{currentType != 'fc3d'}}">
+            <text wx:if="{{item.blue_ball[0]}}" wx:for="{{item.blue_ball}}" wx:key="id" wx:for-item="bb" wx:for-index="idx" class="blue_ball {{index === 0 ? 'active':''}}">{{bb}}</text>
+          </block>
+          <block wx:else>
+            <text class="shjh" style="margin-left:15px;">试机号：{{item.test_num}}</text>
+            <text wx:for="{{item.blue_ball}}" wx:key="id" wx:for-item="bb" class="shjh">{{bb}}</text>
+          </block>
+        </view>
+        <view wx:else>
+          <text class="red_ball {{index === 0 ? 'active':''}}">{{item.lucky_num}}</text>
+          <text class="red_ball {{index === 0 ? 'active':''}}">{{item.lucky_animal}}</text>
+          <text class="red_ball {{index === 0 ? 'active':''}}">{{item.lucky_season}}</text>
+          <text class="red_ball {{index === 0 ? 'active':''}}">{{item.lucky_position}}</text>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  <view class="fixed_foot">
+    <view class="col-4" bindtap="selIndex" data-go="sub">
+      <image src="../../images/kjdy_1.jpg"></image>
+      <text>开奖订阅</text>
+    </view>
+    <view class="col-4" bindtap="selIndex" data-go="zst">
+      <image src="../../images/zst_1.jpg"></image>
+      <text>走势图</text>
+    </view>
+    <view class="col-4" bindtap="selIndex" data-go="predict">
+      <image src="../../images/ycfx.jpg"></image>
+      <text>预测分析</text>
+    </view>
+  </view>
+</view>
